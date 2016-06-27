@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    use strict;
-
-    base_url = "http://atlas/lights/";
+    "use strict";
+    
+    var base_url = "http://atlas/lights/";
 
     function callLights(local, method) {
         $.get( base_url + local + "?method=" + method, function(data) {
