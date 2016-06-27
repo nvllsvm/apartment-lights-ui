@@ -1,6 +1,8 @@
-base_url = "http://atlas/lights/";
-
 $(document).ready(function() {
+    use strict;
+
+    base_url = "http://atlas/lights/";
+
     function callLights(local, method) {
         $.get( base_url + local + "?method=" + method, function(data) {
             x = 1;
@@ -16,6 +18,7 @@ $(document).ready(function() {
     lightMethodMap.off = 'L14';
 
     // unused
+    /*
     lightMethodMap.color_wipe = 'L01';
     lightMethodMap.theatre_chase = 'L03';
     lightMethodMap.rainbow_chase = 'L07';
@@ -25,6 +28,7 @@ $(document).ready(function() {
     lightMethodMap.heartbeat = 'L11';
     lightMethodMap.christmas = 'L12';
     lightMethodMap.cycle_all = 'L13';
+    */
 
     function setupLightGroup(local) {
         var t = document.querySelector("#light-group");
