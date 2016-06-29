@@ -2,9 +2,7 @@ $(document).ready(() => {
     const baseURL = 'http://atlas/lights/';
 
     function callLights(local, method) {
-        $.get(`${baseURL}${local}?method=${method}`, (data) => {
-            let x = 1;
-        });
+        $.get(`${baseURL}${local}?method=${method}`);
     }
 
     const lightMethodMap = [];
