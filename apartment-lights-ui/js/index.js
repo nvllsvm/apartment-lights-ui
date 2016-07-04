@@ -1,10 +1,6 @@
 $(document).ready(() => {
     const baseURL = 'http://atlas/lights/';
 
-    function callLights(local, method) {
-        $.get(`${baseURL}${local}?method=${method}`);
-    }
-
     const lightMethodMap = { white: 'L06',
                              blue: 'L04',
                              red: 'L00',
@@ -13,20 +9,24 @@ $(document).ready(() => {
                              off: 'L14' };
 
     function setupLightGroup(local) {
-        const template = document.querySelector('#light-group');
-        template.content.querySelector('.light-group').id = local;
-        template.content.querySelector('.group-header').textContent = local;
+        const template = $(document.getElementById('light-group').content).clone();
+        template.find('.button').data('lightSet', local);
+        template.find('.group-header').text(local);
 
-        const clone = document.importNode(template.content, true);
-        document.body.appendChild(clone);
-
-        Object.keys(lightMethodMap).forEach((entry) => {
-            $(`#${local} #${entry}`).click(() => {
-                callLights(local, lightMethodMap[entry]);
-            });
+        $.map(lightMethodMap, (value, key) => {
+            template.find(`#${key}.button`).data('method', value);
         });
+
+        $(document.body).append(template);
     }
 
     const groups = ['bedroom', 'tv'];
     groups.forEach(setupLightGroup);
+
+    $('.button').on('click', (event) => {
+        const method = $(event.target).data('method');
+        const lightSet = $(event.target).data('lightSet');
+
+        $.get(`${baseURL}${lightSet}?method=${method}`);
+    });
 });
