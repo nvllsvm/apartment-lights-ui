@@ -5,13 +5,12 @@ $(document).ready(() => {
         $.get(`${baseURL}${local}?method=${method}`);
     }
 
-    const lightMethodMap = [];
-    lightMethodMap.white = 'L06';
-    lightMethodMap.blue = 'L04';
-    lightMethodMap.red = 'L00';
-    lightMethodMap.green = 'L02';
-    lightMethodMap.rainbow = 'L05';
-    lightMethodMap.off = 'L14';
+    const lightMethodMap = { white: 'L06',
+                             blue: 'L04',
+                             red: 'L00',
+                             green: 'L02',
+                             rainbow: 'L05',
+                             off: 'L14' };
 
     function setupLightGroup(local) {
         const template = document.querySelector('#light-group');
