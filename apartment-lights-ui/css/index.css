@@ -61,4 +61,10 @@ body {
     padding: 15px;
     border-radius: 5px;
     background-color: grey;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.row {
+    display: flex;
 }
