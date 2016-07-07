@@ -68,3 +68,15 @@ body {
 .row {
     display: flex;
 }
+
+@media only screen and (max-device-width: 480px) {
+    .light-group {
+        margin: 20px;
+        max-width: 100%;
+        font-size: 40px;
+    }
+
+    .button {
+        padding: 40px;
+    }
+}
